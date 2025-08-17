@@ -16,3 +16,10 @@ func _physics_process(delta: float) -> void:
 
 func _process(delta: float) -> void:
 	pass
+
+
+func _on_ball_touched_wall(wall_name: Variant) -> void:
+	if(wall_name == "left"):
+		print("LEFT")
+	elif(wall_name == "right"):
+		print("RIGHT")
