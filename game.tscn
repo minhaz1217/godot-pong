@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://ciainjckbydh6"]
+[gd_scene load_steps=7 format=3 uid="uid://ciainjckbydh6"]
 
 [ext_resource type="PackedScene" uid="uid://brs2sw2ur3ono" path="res://paddle.tscn" id="1_80nbo"]
 [ext_resource type="Script" uid="uid://c1drmpkx684pf" path="res://game.gd" id="1_e2o6t"]
 [ext_resource type="PackedScene" uid="uid://bgiangnsirj2e" path="res://ball.tscn" id="3_feb5d"]
+[ext_resource type="PackedScene" uid="uid://b15p7yuctuchq" path="res://helpers/debug/DebugOverlay.tscn" id="4_fc0e3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_feb5d"]
 size = Vector2(20, 652)
@@ -52,3 +53,9 @@ shape = SubResource("RectangleShape2D_fc0e3")
 
 [node name="ball" parent="." instance=ExtResource("3_feb5d")]
 scale = Vector2(0.2, 0.2)
+
+[node name="DebugOverlay" parent="." instance=ExtResource("4_fc0e3")]
+offset_left = -566.0
+offset_top = -312.0
+offset_right = -546.0
+offset_bottom = -292.0

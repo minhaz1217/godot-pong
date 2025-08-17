@@ -4,6 +4,12 @@ extends Node2D
 @onready var player_2: Sprite2D = $Player2
 
 
+func _enter_tree() -> void:
+	DebugOverlay.setup_debugger($DebugOverlay)
+
+func _ready() -> void:
+	pass
+	
 
 func _physics_process(delta: float) -> void:
 	pass
