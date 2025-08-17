@@ -22,6 +22,7 @@ DebugOverlay="*res://helpers/debug/debug_overlay.gd"
 [display]
 
 window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
 
 [input]
 
