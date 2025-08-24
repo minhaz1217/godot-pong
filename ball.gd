@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var speed: float = 400
+@export var speed: float = 600
 @export var vertical_velocity: float = 400
 
 
@@ -28,4 +28,6 @@ func _physics_process(delta: float) -> void:
 			touched_wall.emit("right")
 	
 	if (velocity.x > 0 && velocity.x < 100):
-		velocity.x = 200
+		velocity.x = 300
+	if (velocity.y > 500 ):
+		velocity.y = randi_range(300,400)
