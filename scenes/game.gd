@@ -14,7 +14,7 @@ func _enter_tree() -> void:
 
 func _ready() -> void:
 	ball_starting_position = ball.position
-	ball.velocity.y = randi_range(50, 100)
+	ball.velocity.y = randi_range(50, 200)
 	
 func reset_game():
 	ball.position = ball_starting_position
