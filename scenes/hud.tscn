@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://cmyiargfvngqo"]
+
+[node name="hud" type="CanvasLayer"]
+
+[node name="score" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "0 : 0"
+
+[node name="title" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -23.5
+offset_top = -11.5
+offset_right = 23.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 42
+text = "PONG"
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -24.5
+offset_right = 83.0
+offset_bottom = 24.5
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 200
+
+[node name="player1_instruction" type="Label" parent="MarginContainer"]
+layout_mode = 2
+text = "A for up
+Z for down"
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -178.0
+offset_top = -24.5
+offset_bottom = 24.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/margin_top = 200
+theme_override_constants/margin_right = 8
+
+[node name="player2_instruction" type="Label" parent="MarginContainer2"]
+layout_mode = 2
+text = "Up Arrow for up
+Down Arrow for down"
+horizontal_alignment = 2

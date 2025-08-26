@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://ciainjckbydh6"]
+[gd_scene load_steps=8 format=3 uid="uid://ciainjckbydh6"]
 
 [ext_resource type="PackedScene" uid="uid://brs2sw2ur3ono" path="res://scenes/paddle.tscn" id="1_80nbo"]
 [ext_resource type="Script" uid="uid://c1drmpkx684pf" path="res://scenes/game.gd" id="1_e2o6t"]
 [ext_resource type="PackedScene" uid="uid://bgiangnsirj2e" path="res://scenes/ball.tscn" id="3_feb5d"]
 [ext_resource type="PackedScene" uid="uid://b15p7yuctuchq" path="res://helpers/debug/DebugOverlay.tscn" id="4_fc0e3"]
+[ext_resource type="PackedScene" uid="uid://cmyiargfvngqo" path="res://scenes/hud.tscn" id="5_iywne"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_feb5d"]
 size = Vector2(20, 652)
@@ -63,6 +64,7 @@ offset_right = -546.0
 offset_bottom = -292.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="score" type="Label" parent="CanvasLayer"]
 anchors_preset = 5
@@ -75,5 +77,8 @@ grow_horizontal = 2
 size_flags_horizontal = 6
 size_flags_vertical = 2
 text = "0 : 0"
+
+[node name="hud" parent="." instance=ExtResource("5_iywne")]
+metadata/_edit_use_anchors_ = true
 
 [connection signal="touched_wall" from="ball" to="." method="_on_ball_touched_wall"]
