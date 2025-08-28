@@ -17,17 +17,18 @@ func _ready() -> void:
 	DebugOverlay.add_property(self, "velocity", DebugOverlay.DISPLAY_TYPE.ROUND)
 
 func _physics_process(delta: float) -> void:
-	var collide = move_and_collide(velocity * delta)
-	if (collide):
-		velocity = velocity.bounce(collide.get_normal())
-		var collider: StaticBody2D = collide.get_collider()
-				
-		if(collider.is_in_group("left")):
-			touched_wall.emit("left")
-		elif(collider.is_in_group("right")):
-			touched_wall.emit("right")
-	
-	if (velocity.x > 0 && velocity.x < 100):
-		velocity.x = 300
-	if (velocity.y > 500 ):
-		velocity.y = randi_range(300,400)
+	if(GlobalScript.game_running):
+		var collide = move_and_collide(velocity * delta)
+		if (collide):
+			velocity = velocity.bounce(collide.get_normal())
+			var collider: StaticBody2D = collide.get_collider()
+					
+			if(collider.is_in_group("left")):
+				touched_wall.emit("left")
+			elif(collider.is_in_group("right")):
+				touched_wall.emit("right")
+		
+		if (velocity.x > 0 && velocity.x < 100):
+			velocity.x = 300
+		if (velocity.y > 500 ):
+			velocity.y = randi_range(300,400)
