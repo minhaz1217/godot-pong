@@ -2,8 +2,9 @@
 
 [ext_resource type="Script" uid="uid://ce1ctm2ukfu30" path="res://scenes/hud.gd" id="1_ahhtf"]
 
-[node name="hud" type="CanvasLayer"]
+[node name="hud" type="CanvasLayer" node_paths=PackedStringArray("hide_after_game_starts")]
 script = ExtResource("1_ahhtf")
+hide_after_game_starts = [NodePath("MarginContainer"), NodePath("MarginContainer2"), NodePath("VBoxContainer")]
 
 [node name="score" type="Label" parent="."]
 anchors_preset = 5
@@ -72,3 +73,5 @@ text = "PONG"
 [node name="Button" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "Start"
+
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]
