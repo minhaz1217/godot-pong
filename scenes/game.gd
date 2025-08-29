@@ -7,6 +7,7 @@ extends Node2D
 
 var player1_score: int = 0
 var player2_score: int = 0
+var winning_score: int = 1 # if score reaches this point, it's game over
 var ball_starting_position
 
 
@@ -22,7 +23,7 @@ func _ready() -> void:
 	
 func reset_game():
 	ball.position = ball_starting_position
-	if(player1_score > 5 || player2_score > 5):
+	if(player1_score >= winning_score || player2_score >= winning_score):
 		GlobalScript.game_state.emit(GlobalScript.GameState.GAME_OVER)
 	
 func _physics_process(delta: float) -> void:
@@ -44,12 +45,16 @@ func _on_ball_touched_wall(wall_name: Variant) -> void:
 	
 
 func update_score() -> void:
-	score.text = str(player1_score) + " : " + str(player2_score)
+	var score_text = str(player1_score) + " : " + str(player2_score)
+	GlobalScript.update_score.emit(score_text)
 
 func game_over():
 	GlobalScript.game_running = false
 	
 func start_game():
+	player1_score = 0
+	player2_score = 0
+	update_score()
 	reset_game()
 	GlobalScript.game_running = true
 
