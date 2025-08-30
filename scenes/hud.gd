@@ -3,7 +3,6 @@ extends CanvasLayer
 @onready var score_label: Label = $score
 
 
-
 func _ready() -> void:
 	GlobalScript.game_state.connect(manage_game_state)
 	GlobalScript.update_score.connect(manage_update_score)

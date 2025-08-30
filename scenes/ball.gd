@@ -27,7 +27,9 @@ func _physics_process(delta: float) -> void:
 				touched_wall.emit("left")
 			elif(collider.is_in_group("right")):
 				touched_wall.emit("right")
-		
+			else:
+				GlobalScript.main_camera.shake(.05, 50, 10)
+			
 		if (velocity.x > 0 && velocity.x < 100):
 			velocity.x = 300
 		if (velocity.y > 500 ):

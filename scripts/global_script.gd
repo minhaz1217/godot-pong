@@ -8,3 +8,5 @@ enum GameState {
 	PAUSED,
 	GAME_OVER
 }
+
+var main_camera: Camera2D

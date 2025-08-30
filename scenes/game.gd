@@ -4,10 +4,11 @@ extends Node2D
 @onready var player_2: Sprite2D = $Player2
 @onready var score: Label = $CanvasLayer/score
 @onready var ball: CharacterBody2D = $ball
+@onready var camera: Camera2D = $camera
 
 var player1_score: int = 0
 var player2_score: int = 0
-var winning_score: int = 1 # if score reaches this point, it's game over
+var winning_score: int = 5 # if score reaches this point, it's game over
 var ball_starting_position
 
 
@@ -18,7 +19,7 @@ func _enter_tree() -> void:
 func _ready() -> void:
 	ball_starting_position = ball.position
 	ball.velocity.y = randi_range(50, 200)
-	
+	GlobalScript.main_camera = camera
 	GlobalScript.game_state.connect(manage_game_state)
 	
 func reset_game():
@@ -36,10 +37,10 @@ func _process(delta: float) -> void:
 func _on_ball_touched_wall(wall_name: Variant) -> void:
 	if (wall_name == "left"):
 		player2_score += 1
-		print("LEFT")
+		GlobalScript.main_camera.shake(.3, 200, 60)
 	elif (wall_name == "right"):
 		player1_score += 1
-		print("RIGHT")
+		GlobalScript.main_camera.shake(.3, 200, 60)
 	update_score()
 	reset_game()
 	
