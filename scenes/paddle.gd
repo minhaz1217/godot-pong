@@ -6,9 +6,12 @@ enum Player {
 }
 @export var player_type : Player
 var velocity: float = 400
+var screen_width = 250
+
+func _ready() -> void:
+	DebugOverlay.add_property(self, "position", DebugOverlay.DISPLAY_TYPE.ROUND)
 
 func _process(delta: float) -> void:
-	
 	if(player_type == Player.player_1):
 		process_player1_input(delta)
 	else:
@@ -16,15 +19,29 @@ func _process(delta: float) -> void:
 
 
 func process_player1_input(delta: float):
+	if(not GlobalScript.game_running): return
+	var next_pos = 0
 	if Input.is_action_pressed("player1_up"):
-		position.y -= velocity * delta
+		next_pos = position.y - velocity * delta
 	elif Input.is_action_pressed("player1_down"):
-		position.y += velocity * delta
+		next_pos = position.y + velocity * delta
+		
+	if(not is_at_screen_boundary(next_pos) and next_pos != 0):
+		position.y = next_pos
 
+func is_at_screen_boundary(next_pos:float) -> bool:
+	if(next_pos >= screen_width * -1 && next_pos <= screen_width):
+		return false
+	return true
 
 func process_player2_input(delta: float):
+	if(not GlobalScript.game_running): return
+	var next_pos = 0
 	if Input.is_action_pressed("player2_up"):
-		position.y -= velocity * delta
+		next_pos = position.y - velocity * delta
 	elif Input.is_action_pressed("player2_down"):
-		position.y += velocity * delta
+		next_pos = position.y + velocity * delta
+		
+	if(not is_at_screen_boundary(next_pos) and next_pos != 0):
+		position.y = next_pos
 		
