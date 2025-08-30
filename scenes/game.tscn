@@ -1,9 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://ciainjckbydh6"]
+[gd_scene load_steps=11 format=3 uid="uid://ciainjckbydh6"]
 
 [ext_resource type="PackedScene" uid="uid://brs2sw2ur3ono" path="res://scenes/paddle.tscn" id="1_80nbo"]
 [ext_resource type="Script" uid="uid://c1drmpkx684pf" path="res://scenes/game.gd" id="1_e2o6t"]
 [ext_resource type="Script" uid="uid://bvsbduwgjautw" path="res://scripts/camera.gd" id="2_p57ef"]
+[ext_resource type="Texture2D" uid="uid://b7muxsh44ds8q" path="res://assets/environment_forestbackground1-1.png" id="2_u5sy4"]
 [ext_resource type="PackedScene" uid="uid://bgiangnsirj2e" path="res://scenes/ball.tscn" id="3_feb5d"]
+[ext_resource type="Texture2D" uid="uid://5niass0etbi8" path="res://assets/JWDLx5AZBtI.jpg" id="3_gee14"]
 [ext_resource type="PackedScene" uid="uid://b15p7yuctuchq" path="res://helpers/debug/DebugOverlay.tscn" id="4_fc0e3"]
 [ext_resource type="PackedScene" uid="uid://cmyiargfvngqo" path="res://scenes/hud.tscn" id="5_iywne"]
 
@@ -16,6 +18,18 @@ size = Vector2(20, 1152)
 [node name="Game" type="Node2D"]
 script = ExtResource("1_e2o6t")
 
+[node name="backgrounds" type="Node2D" parent="."]
+
+[node name="background1" type="Sprite2D" parent="backgrounds"]
+position = Vector2(-7.01957, 94.5)
+scale = Vector2(1.24609, 1.24609)
+texture = ExtResource("2_u5sy4")
+
+[node name="background2" type="Sprite2D" parent="backgrounds"]
+position = Vector2(11, 35)
+scale = Vector2(1.1168, 1.1168)
+texture = ExtResource("3_gee14")
+
 [node name="camera" type="Camera2D" parent="."]
 script = ExtResource("2_p57ef")
 
@@ -23,19 +37,11 @@ script = ExtResource("2_p57ef")
 position = Vector2(-550, 0)
 rotation = 1.5708
 scale = Vector2(0.3, 0.3)
-collision_layer = 255
-slide_on_ceiling = false
-platform_on_leave = 2
-platform_wall_layers = 1
 
 [node name="Player2" parent="." instance=ExtResource("1_80nbo")]
 position = Vector2(550, 0)
 rotation = 1.5708
 scale = Vector2(0.3, 0.3)
-collision_layer = 255
-slide_on_ceiling = false
-platform_on_leave = 2
-platform_wall_layers = 1
 player_type = 1
 
 [node name="leftCollider" type="StaticBody2D" parent="." groups=["left"]]
@@ -73,9 +79,9 @@ offset_right = -546.0
 offset_bottom = -292.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="score" type="Label" parent="CanvasLayer"]
+visible = false
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5

@@ -32,5 +32,6 @@ func _physics_process(delta: float) -> void:
 			
 		if (velocity.x > 0 && velocity.x < 100):
 			velocity.x = 300
+			
 		if (velocity.y > 500 ):
 			velocity.y = randi_range(300,400)

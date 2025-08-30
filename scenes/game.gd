@@ -11,6 +11,7 @@ var player2_score: int = 0
 var winning_score: int = 5 # if score reaches this point, it's game over
 var ball_starting_position
 
+@onready var backgrounds = [$backgrounds/background1, $backgrounds/background2]
 
 func _enter_tree() -> void:
 	DebugOverlay.setup_debugger($DebugOverlay)
@@ -21,6 +22,12 @@ func _ready() -> void:
 	ball.velocity.y = randi_range(50, 200)
 	GlobalScript.main_camera = camera
 	GlobalScript.game_state.connect(manage_game_state)
+	pick_a_background()
+
+func pick_a_background():
+	for background in backgrounds:
+		background.visible = false
+	backgrounds.pick_random().visible = true
 	
 func reset_game():
 	ball.position = ball_starting_position
@@ -51,12 +58,14 @@ func update_score() -> void:
 
 func game_over():
 	GlobalScript.game_running = false
+
 	
 func start_game():
 	player1_score = 0
 	player2_score = 0
 	update_score()
 	reset_game()
+	pick_a_background()
 	GlobalScript.game_running = true
 
 func manage_game_state(state: GlobalScript.GameState):
