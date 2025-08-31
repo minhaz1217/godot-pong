@@ -30,8 +30,8 @@ func _physics_process(delta: float) -> void:
 			else:
 				GlobalScript.main_camera.shake(.05, 50, 10)
 			
-		if (velocity.x > 0 && velocity.x < 100):
-			velocity.x = 300
+		if (velocity.x > 0 && velocity.x < 200):
+			velocity.x = randi_range(300,400)
 			
 		if (velocity.y > 500 ):
 			velocity.y = randi_range(300,400)

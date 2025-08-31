@@ -38,9 +38,14 @@ func _physics_process(delta: float) -> void:
 	pass
 
 func _process(delta: float) -> void:
+	handle_input()
 	pass
 
-
+func handle_input():
+	if Input.is_action_just_pressed("start_game"):
+		if(not GlobalScript.game_running):
+			GlobalScript.game_state.emit(GlobalScript.GameState.START)
+			
 func _on_ball_touched_wall(wall_name: Variant) -> void:
 	if (wall_name == "left"):
 		player2_score += 1
