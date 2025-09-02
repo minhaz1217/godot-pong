@@ -10,3 +10,4 @@ enum GameState {
 }
 
 var main_camera: Camera2D
+var enable_debug = false

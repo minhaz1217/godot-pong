@@ -5,6 +5,7 @@ extends Node2D
 @onready var score: Label = $CanvasLayer/score
 @onready var ball: CharacterBody2D = $ball
 @onready var camera: Camera2D = $camera
+@onready var debug_overlay: MarginContainer = $DebugOverlay
 
 var player1_score: int = 0
 var player2_score: int = 0
@@ -18,6 +19,9 @@ func _enter_tree() -> void:
 	
 
 func _ready() -> void:
+	if(not GlobalScript.enable_debug):
+		debug_overlay.visible = false
+		
 	ball_starting_position = ball.position
 	ball.velocity.y = randi_range(50, 200)
 	GlobalScript.main_camera = camera
