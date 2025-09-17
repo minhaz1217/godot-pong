@@ -35,6 +35,8 @@ func pick_a_background():
 	
 func reset_game():
 	ball.position = ball_starting_position
+	
+	ball.velocity.y = randf_range(200, 400) * [1,-1].pick_random()
 	if(player1_score >= winning_score || player2_score >= winning_score):
 		GlobalScript.game_state.emit(GlobalScript.GameState.GAME_OVER)
 	
