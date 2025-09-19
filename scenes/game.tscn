@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://ciainjckbydh6"]
+[gd_scene load_steps=14 format=3 uid="uid://ciainjckbydh6"]
 
 [ext_resource type="PackedScene" uid="uid://brs2sw2ur3ono" path="res://scenes/paddle.tscn" id="1_80nbo"]
 [ext_resource type="Script" uid="uid://c1drmpkx684pf" path="res://scenes/game.gd" id="1_e2o6t"]
@@ -8,6 +8,19 @@
 [ext_resource type="Texture2D" uid="uid://5niass0etbi8" path="res://assets/JWDLx5AZBtI.jpg" id="3_gee14"]
 [ext_resource type="PackedScene" uid="uid://b15p7yuctuchq" path="res://helpers/debug/DebugOverlay.tscn" id="4_fc0e3"]
 [ext_resource type="PackedScene" uid="uid://cmyiargfvngqo" path="res://scenes/hud.tscn" id="5_iywne"]
+[ext_resource type="Shader" uid="uid://dx6m4xthol0au" path="res://scenes/deform.gdshader" id="6_0tnpc"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0tnpc"]
+shader = ExtResource("6_0tnpc")
+shader_parameter/x_factor = 1.0
+shader_parameter/bulge = 0.0
+shader_parameter/color = Color(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vtaks"]
+shader = ExtResource("6_0tnpc")
+shader_parameter/x_factor = 1.0
+shader_parameter/bulge = 0.0
+shader_parameter/color = Color(0, 0, 0, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_feb5d"]
 size = Vector2(20, 652)
@@ -35,14 +48,14 @@ texture = ExtResource("3_gee14")
 script = ExtResource("2_p57ef")
 
 [node name="Player1" parent="." instance=ExtResource("1_80nbo")]
+material = SubResource("ShaderMaterial_0tnpc")
 position = Vector2(-550, 0)
 rotation = 1.5708
-scale = Vector2(0.3, 0.3)
 
 [node name="Player2" parent="." instance=ExtResource("1_80nbo")]
+material = SubResource("ShaderMaterial_vtaks")
 position = Vector2(550, 0)
 rotation = 1.5708
-scale = Vector2(0.3, 0.3)
 player_type = 1
 
 [node name="leftCollider" type="StaticBody2D" parent="." groups=["left"]]

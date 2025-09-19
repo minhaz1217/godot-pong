@@ -7,6 +7,7 @@ enum Player {
 @export var player_type : Player
 var velocity: float = 400
 var screen_width = 250
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 func _ready() -> void:
 	DebugOverlay.add_property(self, "position", DebugOverlay.DISPLAY_TYPE.ROUND)
@@ -45,3 +46,6 @@ func process_player2_input(delta: float):
 	if(not is_at_screen_boundary(next_pos) and next_pos != 0):
 		position.y = next_pos
 		
+		
+func bounce() -> void:
+	animation_player.play("hit")
