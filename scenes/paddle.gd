@@ -49,3 +49,4 @@ func process_player2_input(delta: float):
 		
 func bounce() -> void:
 	animation_player.play("hit")
+	$AudioStreamPlayer2D.play() 

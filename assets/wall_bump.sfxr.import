@@ -1,0 +1,17 @@
+[remap]
+
+importer="com.timothyqiu.gdfxr.importer"
+type="AudioStreamWAV"
+uid="uid://cnkrgtmerfus2"
+path="res://.godot/imported/wall_bump.sfxr-c69c384b2bf78d08046e53ad718f6534.sample"
+
+[deps]
+
+source_file="res://assets/wall_bump.sfxr"
+dest_files=["res://.godot/imported/wall_bump.sfxr-c69c384b2bf78d08046e53ad718f6534.sample"]
+
+[params]
+
+loop=false
+bit_depth=0
+sample_rate=0

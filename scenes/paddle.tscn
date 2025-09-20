@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://brs2sw2ur3ono"]
+[gd_scene load_steps=10 format=3 uid="uid://brs2sw2ur3ono"]
 
 [ext_resource type="Texture2D" uid="uid://caq6ujky2ukgx" path="res://assets/paddle.png" id="1_0sbc1"]
 [ext_resource type="Shader" uid="uid://dx6m4xthol0au" path="res://scenes/deform.gdshader" id="1_mo4dg"]
 [ext_resource type="Script" uid="uid://dknvq3lcqqkhl" path="res://scenes/paddle.gd" id="2_tbytw"]
+[ext_resource type="AudioStream" uid="uid://tjyl1vcw6v4a" path="res://assets/paddle_bump.sfxr" id="4_pacq5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pacq5"]
 shader = ExtResource("1_mo4dg")
@@ -25,7 +26,7 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.3, 0.4),
-"transitions": PackedFloat32Array(-0.5, -0.5, -0.5, -0.5),
+"transitions": PackedFloat32Array(-2, -2, -2, -2),
 "update": 0,
 "values": [Vector2(0.3, 0.3), Vector2(0.4, 0.192), Vector2(0.285, 0.369), Vector2(0.3, 0.3)]
 }
@@ -37,7 +38,7 @@ tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.3, 0.4),
-"transitions": PackedFloat32Array(-0.5, -0.5, -0.5, -0.5),
+"transitions": PackedFloat32Array(-2, -2, -2, -2),
 "update": 0,
 "values": [0.0, 0.04300004954250003, -0.16699996043249998, 0.0]
 }
@@ -49,7 +50,7 @@ tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.3, 0.4),
-"transitions": PackedFloat32Array(-0.5, -0.5, -0.5, -0.5),
+"transitions": PackedFloat32Array(-2, -2, -2, -2),
 "update": 0,
 "values": [1.0, 1.045, 0.94, 1.0]
 }
@@ -106,7 +107,6 @@ texture = ExtResource("1_0sbc1")
 script = ExtResource("2_tbytw")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 rotation = 1.5708
@@ -116,3 +116,6 @@ shape = SubResource("CapsuleShape2D_tbytw")
 libraries = {
 &"": SubResource("AnimationLibrary_pacq5")
 }
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_pacq5")

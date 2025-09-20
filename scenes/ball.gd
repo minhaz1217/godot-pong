@@ -24,11 +24,15 @@ func _physics_process(delta: float) -> void:
 			var collider: StaticBody2D = collide.get_collider()
 			if(collider.is_in_group("left")):
 				touched_wall.emit("left")
+				$destroy.play()
 			elif(collider.is_in_group("right")):
 				touched_wall.emit("right")
+				$destroy.play()
 			else:
 				if(collider.get_parent().has_method("bounce")):
 					collider.get_parent().bounce()
+				else:
+					$wall_bump.play()
 				GlobalScript.main_camera.shake(.05, 50, 10)
 			
 		if (velocity.x > 0 && velocity.x < 200):
