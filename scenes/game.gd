@@ -6,13 +6,17 @@ extends Node2D
 @onready var ball: CharacterBody2D = $ball
 @onready var camera: Camera2D = $camera
 @onready var debug_overlay: MarginContainer = $DebugOverlay
+@onready var backgrounds = [$backgrounds/background1, $backgrounds/background2]
+@onready var game: Node2D = $"."
 
 var player1_score: int = 0
 var player2_score: int = 0
 var winning_score: int = 5 # if score reaches this point, it's game over
 var ball_starting_position
 
-@onready var backgrounds = [$backgrounds/background1, $backgrounds/background2]
+
+const count_down_scene = preload("res://scenes/count_down.tscn")
+
 
 func _enter_tree() -> void:
 	DebugOverlay.setup_debugger($DebugOverlay)
@@ -40,12 +44,9 @@ func reset_game():
 	if(player1_score >= winning_score || player2_score >= winning_score):
 		GlobalScript.game_state.emit(GlobalScript.GameState.GAME_OVER)
 	
-func _physics_process(delta: float) -> void:
-	pass
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	handle_input()
-	pass
 
 func handle_input():
 	if Input.is_action_just_pressed("start_game"):
@@ -56,12 +57,23 @@ func _on_ball_touched_wall(wall_name: Variant) -> void:
 	if (wall_name == "left"):
 		player2_score += 1
 		GlobalScript.main_camera.shake(.3, 200, 60)
+		start_count_down()
 	elif (wall_name == "right"):
 		player1_score += 1
 		GlobalScript.main_camera.shake(.3, 200, 60)
+		start_count_down()
 	update_score()
 	reset_game()
 	
+func start_count_down() -> void :
+	GlobalScript.game_running = false
+	var count_down = count_down_scene.instantiate()
+	count_down.connect("timer_finished", finished_count_down)
+	game.add_child(count_down)
+
+func finished_count_down() -> void:
+	GlobalScript.game_running = true
+
 
 func update_score() -> void:
 	var score_text = str(player1_score) + " : " + str(player2_score)
