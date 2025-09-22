@@ -1,4 +1,7 @@
-[gd_scene format=3 uid="uid://bxuw7dkodq64s"]
+[gd_scene load_steps=3 format=3 uid="uid://bxuw7dkodq64s"]
+
+[ext_resource type="Script" uid="uid://buxmrp6p1vodr" path="res://scenes/count_down.gd" id="1_2nt72"]
+[ext_resource type="FontFile" uid="uid://cibqmhefae4ld" path="res://assets/fonts/Kenney Future Narrow.ttf" id="2_34mrw"]
 
 [node name="CountDown" type="Control"]
 layout_mode = 3
@@ -7,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_2nt72")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
@@ -21,6 +25,13 @@ offset_right = 20.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_34mrw")
+theme_override_font_sizes/font_size = 160
 text = "3"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
