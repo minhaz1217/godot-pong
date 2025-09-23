@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://bxuw7dkodq64s"]
+[gd_scene load_steps=5 format=3 uid="uid://bxuw7dkodq64s"]
 
 [ext_resource type="Script" uid="uid://buxmrp6p1vodr" path="res://scenes/count_down.gd" id="1_2nt72"]
 [ext_resource type="FontFile" uid="uid://cibqmhefae4ld" path="res://assets/fonts/Kenney Future Narrow.ttf" id="2_34mrw"]
+[ext_resource type="AudioStream" uid="uid://dlnnt6afec73w" path="res://assets/count_down.sfxr" id="3_i43cd"]
+[ext_resource type="AudioStream" uid="uid://bcen357bjiu7g" path="res://assets/count_down_end.sfxr" id="4_v7end"]
 
 [node name="CountDown" type="Control"]
 layout_mode = 3
@@ -33,5 +35,11 @@ vertical_alignment = 1
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
+
+[node name="CountDownSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_i43cd")
+
+[node name="CountDownEnd" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_v7end")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
