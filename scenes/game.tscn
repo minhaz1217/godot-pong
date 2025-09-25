@@ -110,4 +110,9 @@ text = "0 : 0"
 [node name="hud" parent="." instance=ExtResource("5_iywne")]
 metadata/_edit_use_anchors_ = true
 
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+position = Vector2(1031, -313)
+color = Color(0.5540063, 0.5033022, 0.108822346, 1)
+max_distance = 0.0
+
 [connection signal="touched_wall" from="ball" to="." method="_on_ball_touched_wall"]

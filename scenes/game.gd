@@ -13,7 +13,7 @@ var player1_score: int = 0
 var player2_score: int = 0
 var winning_score: int = 5 # if score reaches this point, it's game over
 var ball_starting_position
-
+var count_down_timer_running = false
 
 const count_down_scene = preload("res://scenes/count_down.tscn")
 
@@ -50,7 +50,7 @@ func _process(_delta: float) -> void:
 
 func handle_input():
 	if Input.is_action_just_pressed("start_game"):
-		if(not GlobalScript.game_running):
+		if(not GlobalScript.game_running and not count_down_timer_running):
 			GlobalScript.game_state.emit(GlobalScript.GameState.START)
 			
 func _on_ball_touched_wall(wall_name: Variant) -> void:
@@ -67,12 +67,14 @@ func _on_ball_touched_wall(wall_name: Variant) -> void:
 	
 func start_count_down() -> void :
 	GlobalScript.game_running = false
+	count_down_timer_running = true
 	var count_down = count_down_scene.instantiate()
 	count_down.connect("timer_finished", finished_count_down)
 	game.add_child(count_down)
 
 func finished_count_down() -> void:
 	GlobalScript.game_running = true
+	count_down_timer_running = false
 
 
 func update_score() -> void:
